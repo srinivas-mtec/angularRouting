@@ -29,13 +29,11 @@
       <div class="form-group">
         <label class="col-sm-2  control-label" for="email">Email</label>
         <div class="col-sm-10">
-          <input class=" form-control" formControlName="email" type="text" id="email" />
+          <input class=" form-control" (blur)="logValidationErr()" formControlName="email" type="text" id="email" />
         </div>
-        <span class="help-block" style="color:red;padding-left: 30px;" *ngIf="employeeForm.get('firstName').touched || 
-        employeeForm.get('firstName').dirty">
-          <span *ngIf="employeeForm.get('firstName').errors && employeeForm.get('firstName').errors.email">
-            *FirstName required </span>
-            </span>
+        <span class="help-block" style="color:red;padding-left: 30px;" *ngIf="formErrors.email">
+          {{formErrors.email}}
+          </span>
       </div>
 
       <div formgroupName="skills">

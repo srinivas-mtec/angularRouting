@@ -53,7 +53,7 @@ export class CreateEmployeeComponent implements OnInit {
         });
         */
     this.employeeForm = this.fb.group({
-      firstName: ['', [Validators.required, Validators.minLength(10)]],
+      firstName: ['', [Validators.required, Validators.minLength(2)]],
       email: ['', Validators.required],
       skills: this.fb.group({
         skillName: [''],
@@ -62,9 +62,9 @@ export class CreateEmployeeComponent implements OnInit {
       })
     });
 
- this.employeeForm.valueChanges.subscribe( ()=>{
-  this.logValidationErr(this.employeeForm);
- })
+    this.employeeForm.valueChanges.subscribe(() => {
+      this.logValidationErr(this.employeeForm);
+    })
   }
 
 
@@ -74,17 +74,18 @@ export class CreateEmployeeComponent implements OnInit {
       if (abstractControl instanceof FormGroup) {
         this.logValidationErr(abstractControl);
       } else {
-         if(abstractControl && !abstractControl.valid && (abstractControl.touched || abstractControl.dirty)){
-           const message = this.validationMessages[key];
-           this.formErrors[key] = '';
-           for (const errorKey in abstractControl.errors) {
+        this.formErrors[key] = '';
+        if (abstractControl && !abstractControl.valid && (abstractControl.touched || abstractControl.dirty)) {
+          const message = this.validationMessages[key];
+          for (const errorKey in abstractControl.errors) {
             if (errorKey) {
               this.formErrors[key] += message[errorKey] + ' ';
             }
-        
-           
-         }
 
+
+          }
+
+        }
       }
     }
     )
@@ -111,7 +112,6 @@ export class CreateEmployeeComponent implements OnInit {
 
     });
 
-    this.loadData(this.employeeForm);
   }
 
 }
