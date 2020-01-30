@@ -1,0 +1,17 @@
+<div class="container">
+  <h1>Select your services</h1>
+  <form [formGroup]="packageForm" (submit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">Your name:</label>
+      <input name="name" formControlName="name" />
+    </div>
+    <div formGroupName="serviceInfo">
+      <div class="form-group">
+        <label>Delivery Date:</label>
+        <input formControlName="deliveryDate" type="date" />
+      </div>
+     
+    </div>
+    <div><button class="btn btn-primary">Save</button></div>
+  </form>
+</div>

@@ -1,0 +1,83 @@
+<form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+
+  <div class="panel panel-primary">
+
+    <div class="panel-heading">
+      <h3 class="panel-title">Create Employee</h3>
+    </div>
+
+    <div class="panel-body">
+      <div class="form-group">
+        <label class="col-sm-2 control-label" for="FirstName">FirstName</label>
+        <div class="col-sm-10">
+          <input class="form-control" (blur)="logValidationErr()" formControlName="firstName" type="text" id="FirstName" />
+        </div>
+        <!--
+        <span class="help-block" style="color:red;padding-left: 30px;" *ngIf="employeeForm.get('firstName').touched || 
+        employeeForm.get('firstName').dirty">
+          <span *ngIf="employeeForm.get('firstName').errors && employeeForm.get('firstName').errors.required">
+            *FirstName required </span>
+          <span *ngIf="employeeForm.get('firstName').errors && employeeForm.get('firstName').errors.minlength">
+            *FirstName Must be 10 characters </span>
+        </span>
+        -->
+        <span class="help-block" style="color:red;padding-left: 30px;" *ngIf="formErrors.firstName">
+        {{formErrors.firstName}}
+        </span>
+
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2  control-label" for="email">Email</label>
+        <div class="col-sm-10">
+          <input class=" form-control" formControlName="email" type="text" id="email" />
+        </div>
+        <span class="help-block" style="color:red;padding-left: 30px;" *ngIf="employeeForm.get('firstName').touched || 
+        employeeForm.get('firstName').dirty">
+          <span *ngIf="employeeForm.get('firstName').errors && employeeForm.get('firstName').errors.email">
+            *FirstName required </span>
+            </span>
+      </div>
+
+      <div formgroupName="skills">
+
+        <div class="form-group">
+          <label class="col-sm-2 control-label">skills</label>
+          <div class="col-sm-10">
+            <input id="skillName" class=" col-sm-5 form-control" type="text" placeholder="skillName"
+              fomControlName="skillName" />
+           
+            <input class=" col-sm-5 form-control" type="text" placeholder="expInYrs" fomControlName="expInYrs" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label class=" col-sm-3 control-label" for="proficiency">proficiency</label>
+          <label class="radio-inline">
+            <input name="proficiency" type="radio" value="beginer" fomControlName="proficiency" />beginer
+          </label>
+          <label class="radio-inline">
+            <input name="proficiency" type="radio" value="intermediate" fomControlName="proficiency" /> Intermediate
+          </label>
+          <label class="radio-inline">
+            <input name="proficiency" type="radio" value="experianced" fomControlName="proficiency" />experianced
+          </label>
+
+
+        </div>
+
+      </div>
+
+
+    </div>
+
+
+    <div class="panel-footer">
+      <div class="btn-toolbar">
+        <button class="btn btn-primary" type="submit">Save</button>
+        <button class="btn btn-primary" type="button" (click)="onLoadData()">LoadDate</button>
+      </div>
+    </div>
+
+  </div>
+</form>
+
+{{employeeForm.get('firstName').errors|json}}
