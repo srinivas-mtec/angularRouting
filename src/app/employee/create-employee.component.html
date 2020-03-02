@@ -1,4 +1,4 @@
-<form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+<form class = "form-horizontal" [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
 
   <div class="panel panel-primary">
 
@@ -10,7 +10,8 @@
       <div class="form-group">
         <label class="col-sm-2 control-label" for="FirstName">FirstName</label>
         <div class="col-sm-10">
-          <input class="form-control" (blur)="logValidationErr()" formControlName="firstName" type="text" id="FirstName" />
+          <input class="form-control" (blur)="logValidationErr()" formControlName="firstName" type="text"
+            id="FirstName" />
         </div>
         <!--
         <span class="help-block" style="color:red;padding-left: 30px;" *ngIf="employeeForm.get('firstName').touched || 
@@ -22,7 +23,7 @@
         </span>
         -->
         <span class="help-block" style="color:red;padding-left: 30px;" *ngIf="formErrors.firstName">
-        {{formErrors.firstName}}
+          {{formErrors.firstName}}
         </span>
 
       </div>
@@ -33,30 +34,30 @@
         </div>
         <span class="help-block" style="color:red;padding-left: 30px;" *ngIf="formErrors.email">
           {{formErrors.email}}
-          </span>
+        </span>
       </div>
 
-      <div formgroupName="skills">
+      <div formGroupName="skills">
 
         <div class="form-group">
           <label class="col-sm-2 control-label">skills</label>
           <div class="col-sm-10">
-            <input id="skillName" class=" col-sm-5 form-control" type="text" placeholder="skillName"
-              fomControlName="skillName" />
-           
-            <input class=" col-sm-5 form-control" type="text" placeholder="expInYrs" fomControlName="expInYrs" />
+            <input class=" col-sm-5 form-control" type="text" placeholder="skillName"
+            formControlName="skillName" />
+
+            <input class=" col-sm-5 form-control" type="text" placeholder="expInYrs" formControlName="expInYrs" />
           </div>
         </div>
         <div class="form-group">
           <label class=" col-sm-3 control-label" for="proficiency">proficiency</label>
           <label class="radio-inline">
-            <input name="proficiency" type="radio" value="beginer" fomControlName="proficiency" />beginer
+            <input name="proficiency" type="radio" value="beginer" formControlName="proficiency" />beginer
           </label>
           <label class="radio-inline">
-            <input name="proficiency" type="radio" value="intermediate" fomControlName="proficiency" /> Intermediate
+            <input name="proficiency" type="radio" value="intermediate" formControlName="proficiency" /> Intermediate
           </label>
           <label class="radio-inline">
-            <input name="proficiency" type="radio" value="experianced" fomControlName="proficiency" />experianced
+            <input name="proficiency" type="radio" value="experianced" formControlName="proficiency" />experianced
           </label>
 
 

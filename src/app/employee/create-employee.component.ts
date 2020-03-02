@@ -1,5 +1,7 @@
 import { Component, OnInit, } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+import { Employee } from '../model/employee';
+import { EmployeeService  } from '../SharedService/employee.service';
 
 @Component({
   selector: 'app-create-employee',
@@ -9,7 +11,7 @@ import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
 export class CreateEmployeeComponent implements OnInit {
 
   employeeForm: FormGroup;
-  skills: FormGroup;
+
   formErrors = {
     'firstName': '',
     'email': '',
@@ -38,7 +40,7 @@ export class CreateEmployeeComponent implements OnInit {
     },
   };
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private empService:EmployeeService) { }
 
   ngOnInit() {
     /*
@@ -53,12 +55,12 @@ export class CreateEmployeeComponent implements OnInit {
         });
         */
     this.employeeForm = this.fb.group({
-      firstName: ['', [Validators.required, Validators.minLength(2)]],
-      email: ['', Validators.required],
+      firstName:new FormControl('', [Validators.required, Validators.minLength(2)]),
+      email: new FormControl('', Validators.required),
       skills: this.fb.group({
-        skillName: [''],
-        expInYrs: [''],
-        proficiency: ['beginer']
+        skillName: new FormControl(''),
+        expInYrs: new FormControl(''),
+        proficiency: new FormControl('beginer')
       })
     });
 
@@ -96,7 +98,23 @@ export class CreateEmployeeComponent implements OnInit {
 
   onSubmit(): void {
 
-    console.log(this.employeeForm.get('skills.skillName').value);
+    console.log(this.employeeForm.value);
+     let emp:Employee = new Employee();
+      emp.name = this.employeeForm.get('firstName').value;
+     emp.email = this.employeeForm.get('email').value;
+      emp.skillName = this.employeeForm.get('skills').get('skillName').value;
+      emp.expInYears = this.employeeForm.get('skills').get('expInYrs').value;
+      emp.proficiency = this.employeeForm.get('skills').get('proficiency').value;
+      console.log("onSubmit :"+emp);
+      this.empService.saveEmployeeDetails(emp).subscribe((data)=>
+      {
+        console.log("Data returned :"+data);
+      },
+      error =>{
+        console.log("Error resp "+JSON.stringify(error));
+      }
+      )
+    
   }
 
   onLoadData(): void {

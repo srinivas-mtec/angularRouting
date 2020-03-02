@@ -23,6 +23,8 @@
     "bootstrap": "^3.4.1",
     "core-js": "^2.5.4",
     "rxjs": "~6.2.0",
+    "rxjs-compat": "^6.5.4",
+    "rxjs-tslint": "^0.1.7",
     "source-map-explorer": "^2.2.2",
     "zone.js": "~0.8.26"
   },

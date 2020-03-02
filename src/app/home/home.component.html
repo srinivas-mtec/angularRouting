@@ -1,3 +1,25 @@
-<p>
-  home works! {{usrl}}
-</p>
+<form [formGroup]="student" (ngSubmit)="submitForm()">
+  <div class="container form-group">
+    <label class="col-xs-4  control-label" >Name :</label>
+       <input class="col-xs-4" type="text" formControlName="name" />
+   
+  </div>
+
+  <div formGroupName="address">
+    <div class="container form-group">
+      <label class="col-xs-4  control-label" > Address :</label>
+        <input class="col-xs-4" type="text" formControlName="address1" />
+     
+    </div>
+    <div class="container form-group">
+      <label class="col-xs-4  control-label" > PostCode :</label>
+        
+        <input  class="col-xs-4" type="text" formControlName="postCode" />
+      
+    </div>
+
+  </div>
+  <div  class="container">
+  <button  class="col-xs-4"  type="submit">Submit</button>
+</div>
+</form>

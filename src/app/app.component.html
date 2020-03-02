@@ -1,22 +1,61 @@
-<div class = "container-fluid"  style="padding: 8px; background-color:cyan;">
-<ul class = "nav nav-bar-default" >
-<li routerLinkActive = "active" class="col-xs-1" > 
-  <a routerLink = "Home" >Home</a>
-</li>
-<li routerLinkActive = "active"  class="col-xs-1" > 
-  <a routerLink = "create" >Create</a>
-</li>
-<li routerLinkActive = "active"  class="col-xs-1" > 
-  <a routerLink = "list" >List</a>
-</li>
-<li routerLinkActive = "active"  class="col-xs-offset-7   col-xs-2"  > 
-  <a routerLink = "Contact" >Contactus</a>
-</li>
-</ul>
+<div class="container-fluid" style="padding: 8px; background-color:cyan;">
+  <ul class="nav nav-bar-default">
+    <li routerLinkActive="active" class="col-xs-1">
+      <a routerLink="Home">Home</a>
+    </li>
+    <li routerLinkActive="active" class="col-xs-1">
+      <a routerLink="create">Create</a>
+    </li>
+    <li routerLinkActive="active" class="col-xs-1">
+      <a routerLink="list">List</a>
+    </li>
+    <li routerLinkActive="active" class="col-xs-offset-7   col-xs-2">
+      <a routerLink="Contact">Contactus</a>
+    </li>
+  </ul>
 </div>
-<br/>
-<br/>
-<div style="padding-right: 18px">
-<router-outlet></router-outlet>
-</div>
+<br />
+<br />
+<nav class="navbar navbar-inverse navbar-fixed-left" id="sidebar-wrapper" role="navigation">
+  <ul class="nav sidebar-nav">
+      <li class="sidebar-brand">
+          <a href="#">
+              Brand
+          </a>
+      </li>
+      <li>
+          <a href="#">Home</a>
+      </li>
+      <li>
+          <a href="#">About</a>
+      </li>
+      <li>
+          <a href="#">Events</a>
+      </li>
+      <li>
+          <a href="#">Team</a>
+      </li>
+      <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              Works <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu" role="menu">
+              <li><a href="#">About</a></li>
+              <li><a href="#">Services</a></li>
+              <li><a href="#">Clients</a></li>
+              <li><a href="#">Contact</a></li>
+          </ul>
+      </li>
+      <li>
+          <a href="#">Services</a>
+      </li>
+      <li>
+          <a href="#">Contact</a>
+      </li>
+  </ul>
+</nav>
 
+
+<div style="padding-right: 18px">
+  <router-outlet></router-outlet>
+</div>
